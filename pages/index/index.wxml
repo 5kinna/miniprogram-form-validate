@@ -1,0 +1,8 @@
+<!-- index.wxml -->
+<view class="container">
+  <my-form rules="{{rules}}" bind:ruleResult="ruleResult" class="address-edit-form">
+    <my-form-item data-prop="contact" label="姓名" required>
+      <my-input placeholder="请输入" class="no-margin" value="{{formData.contact}}"></my-input>
+    </my-form-item>
+  </my-form>
+</view>

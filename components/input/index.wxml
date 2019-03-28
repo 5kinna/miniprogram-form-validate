@@ -1,0 +1,11 @@
+<view class="input-wrap">
+  <view class="input-main">
+    <view class="input">
+      <view class="input-box a-line br3">
+        <input type="text" value="{{value}}" password="{{password}}" placeholder="{{placeholder}}" bindinput="onInput">
+          <slot />
+        </input>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<view class="form-item">
+  <view class="input-title{{ required ? ' required' : '' }}" wx-if="{{label}}">{{label}}</view>
+  <slot></slot>
+  <view class="form-err" wx:if="{{validateError}}">{{validateMessage}}</view>
+</view>

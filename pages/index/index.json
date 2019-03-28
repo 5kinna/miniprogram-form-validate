@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "my-input": "/components/input/index",
+    "my-form": "/components/form/index",
+    "my-form-item": "/components/form-item/index"
+  }
+}
