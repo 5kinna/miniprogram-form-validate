@@ -1,0 +1,26 @@
+<picker class="input-box a-line br3 {{disabled?'picker-disabled':''}} my-picker" range-key="{{valuekey}}" value="{{value}}" range="{{data}}" bindchange="pickerChange" wx:if="{{ mode==='default' }}" disabled="{{disabled}}">
+  <view class="input-picker">
+    {{value===undefined||value===null||value===''?placeholder:data[value][valuekey]}}
+    <view class="icon">
+      <view class="iconfont {{icon}}"></view>
+    </view>
+  </view>
+</picker>
+<view class="input-box a-line br3 {{disabled?'picker-disabled':''}} my-picker" wx:elif="{{ mode==='city' }}">
+  <my-city-picker bindselect="onSelect" codes="{{cityId}}" data="{{cityList}}" disabled="{{disabled}}">
+    <view class="input-picker">
+      {{value.length?value:placeholder}}
+      <view class="icon">
+        <view class="iconfont myhr-location"></view>
+      </view>
+    </view>
+  </my-city-picker>
+</view>
+<picker class="input-box a-line br3 {{disabled?'picker-disabled':''}}" mode="{{mode}}" value="{{value}}" fields="{{fields}}" disabled="{{disabled}}" wx:else bindchange="pickerChange">
+  <view class="input-picker">
+    {{value}}
+    <view class="icon">
+      <view class="iconfont {{mode==='date'?'myhr-calendar':'myhr-schedule'}}"></view>
+    </view>
+  </view>
+</picker>

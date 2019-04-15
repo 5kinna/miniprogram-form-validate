@@ -1,5 +1,6 @@
 import AsyncValidator from '../../utils/async-validator/index'
 Component({
+  externalClasses: ['my-form-item', 'my-form-error'],
   properties: {
     prop: String,
     label: {
@@ -15,7 +16,8 @@ Component({
     },
   },
   data: {
-    validateError: false, //验证是否错误
+    validateError: true, //验证是否错误
+    validateStatus: 'validating', //验证状态
     validateMessage: '', //错误提示
     elForm: null, //父组件form实例
   },
@@ -26,19 +28,31 @@ Component({
     '../input/index': {
       type: 'child',
     },
+    '../picker/index': {
+      type: 'child',
+    },
+    '../upload/index': {
+      type: 'child',
+    },
   },
   lifetimes: {
     ready() {
       this._initForm()
+    },
+    // 组件被销毁时调用
+    detached() {
+      const p = this.data.elForm || this.getRelationNodes('../form/index')[0]
+      p.destory(this)
     },
   },
   methods: {
     // 初始化form组件实例
     _initForm() {
       const elForm = this.getRelationNodes('../form/index')[0]
-      this.setData({
-        elForm,
-      })
+      elForm &&
+        this.setData({
+          elForm,
+        })
     },
 
     // 合并规则
@@ -64,6 +78,7 @@ Component({
     errorHandle(errorMessage) {
       this.setData({
         validateError: !!errorMessage,
+        validateStatus: errorMessage ? 'error' : 'success',
         validateMessage: errorMessage,
       })
     },
@@ -71,8 +86,9 @@ Component({
     // 验证
     validate(value, trigger = '', callback = this.errorHandle.bind(this)) {
       const prop = this.properties.prop
+      // 没有prop，不需要验证
+      if (!prop) return
       const rules = this.getFilteredRule(trigger)
-
       const validator = new AsyncValidator({ [prop]: rules })
 
       validator.validate({ [prop]: value }, { firstFields: true }, errors => {

@@ -1,0 +1,5 @@
+radio-group label,
+checkbox-group label {
+  display: inline-block;
+  margin: 10rpx 32rpx 10rpx 0;
+}

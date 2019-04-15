@@ -1,0 +1,1 @@
+<checkbox value="{{value}}" checked="{{checked}}" disabled="{{disabled}}" />

@@ -1,0 +1,12 @@
+<view class="input-upload br6 {{type==='file'&&value?'file-upload':''}} my-upload {{value?'':'d-line'}}">
+  <block wx:if="{{!value}}">
+    <view class="input-add" wx:if="{{!disabled}}" bind:tap="chooseImage">
+      <view class="iconfont myhr-add input-add-icon"></view>
+      <view>{{uploadtext}}</view>
+    </view>
+    <view class="input-text" wx:else>暂无{{type==='file'?'文件':'图片'}}</view>
+  </block>
+  <view class="input-preview" wx:else>
+    <image src="{{value}}" data-url="{{value}}" bind:tap="previewImage"></image>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<radio-group class="input-box">
+  <label class="radio" wx:for="{{data}}" wx:key="{{index}}">
+    <radio value="{{item[valuekey]}}" checked="{{item[checkedkey]}}" disabled="{{item[disabled]}}" />
+    {{item[labelkey]}}
+  </label>
+</radio-group>
