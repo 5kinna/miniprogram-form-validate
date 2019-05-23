@@ -3,8 +3,8 @@ Component({
   properties: {
     rules: {
       type: Object,
-      value: {},
-    },
+      value: {}
+    }
   },
   relations: {
     '../form-item/index': {
@@ -15,11 +15,11 @@ Component({
           this.setData({ [`childList[${this.data.childList.length}]`]: target })
           this._initChild(target)
         }
-      },
-    },
+      }
+    }
   },
   data: {
-    childList: [], //存放需要验证的form-item
+    childList: [] //存放需要验证的form-item
   },
   methods: {
     // 设置form-properties
@@ -63,12 +63,12 @@ Component({
       childList.splice(index, 1)
       this.setData(
         {
-          childList,
+          childList
         },
         () => {
           this.validate()
-        },
+        }
       )
-    },
-  },
+    }
+  }
 })

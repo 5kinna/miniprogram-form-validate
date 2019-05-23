@@ -1,6 +1,3 @@
 {
-  "component": true,
-  "usingComponents": {
-    "my-city-picker": "/components/miniprogram-city-picker/index"
-  }
+  "component": true
 }

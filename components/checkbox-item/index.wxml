@@ -1,1 +1,4 @@
-<checkbox value="{{value}}" checked="{{checked}}" disabled="{{disabled}}" />
+<view class="checkbox my-checkbox-item" catchtap="checkboxChange">
+  <checkbox value="{{value}}" checked="{{checked}}" disabled="{{disabled}}" />
+  <view class="checkbox-label">{{label}}</view>
+</view>

@@ -5,45 +5,49 @@ Component({
   externalClasses: ['my-input'],
   options: {
     addGlobalClass: true,
-    multipleSlots: true,
+    multipleSlots: true
   },
   properties: {
+    phcolor: {
+      type: String,
+      value: ''
+    },
     value: {
       type: String,
       value: '',
       observer(val) {
         this.judgyValue(val) && this.checkRule(val)
-      },
+      }
     },
     type: {
       type: String,
-      value: 'text',
+      value: 'text'
     },
     placeholder: {
       type: String,
-      value: '',
+      value: ''
     },
     disabled: {
       type: Boolean,
-      value: false,
+      value: false
     },
     password: {
       type: Boolean,
-      value: false,
-    },
+      value: false
+    }
   },
   relations: {
     '../form-item/index': {
-      type: 'parent',
-    },
+      type: 'parent'
+    }
   },
   data: {
-    elFormItem: null,
+    elFormItem: null
   },
   lifetimes: {
     ready() {
       this.initFormItem()
-    },
+    }
   },
   methods: {
     judgyValue(value = this.properties.value) {
@@ -55,11 +59,11 @@ Component({
       elFormItem &&
         this.setData(
           {
-            elFormItem,
+            elFormItem
           },
           () => {
             this.judgyValue() && this.checkRule(this.properties.value)
-          },
+          }
         )
     },
     // input value
@@ -73,6 +77,6 @@ Component({
         this.data.elFormItem || this.getRelationNodes('../form-item/index')[0]
       if (!p) return
       p.validate(value)
-    },
-  },
+    }
+  }
 })

@@ -6,16 +6,6 @@
     </view>
   </view>
 </picker>
-<view class="input-box a-line br3 {{disabled?'picker-disabled':''}} my-picker" wx:elif="{{ mode==='city' }}">
-  <my-city-picker bindselect="onSelect" codes="{{cityId}}" data="{{cityList}}" disabled="{{disabled}}">
-    <view class="input-picker">
-      {{value.length?value:placeholder}}
-      <view class="icon">
-        <view class="iconfont myhr-location"></view>
-      </view>
-    </view>
-  </my-city-picker>
-</view>
 <picker class="input-box a-line br3 {{disabled?'picker-disabled':''}}" mode="{{mode}}" value="{{value}}" fields="{{fields}}" disabled="{{disabled}}" wx:else bindchange="pickerChange">
   <view class="input-picker">
     {{value}}

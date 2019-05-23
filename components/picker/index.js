@@ -1,92 +1,76 @@
 import bindData from '../../behaviors/bindData'
-import { getInitCity, setStorage, getStorage } from '../../utils/utils'
 Component({
   behaviors: [bindData],
   externalClasses: ['my-picker'],
+  options: {
+    addGlobalClass: true
+  },
   properties: {
     fields: {
       type: String,
-      value: 'month',
+      value: 'month'
     },
     value: {
       type: [Number, Array],
       observer(val) {
         this.judgyValue(val) && this.checkRule(val)
-      },
+      }
     },
     cityId: {
       type: Array,
-      value: [],
+      value: []
     },
     mode: {
       type: String,
-      value: 'default',
+      value: 'default'
     },
     icon: {
       type: String,
-      value: 'myhr-downtriangle',
+      value: 'myhr-downtriangle'
     },
     placeholder: {
       type: String,
-      value: '',
+      value: ''
     },
     disabled: {
       type: Boolean,
-      value: false,
+      value: false
     },
     data: {
       type: Array,
-      value: [],
+      value: []
     },
     valuekey: {
       type: String,
-      value: 'value',
-    },
+      value: 'value'
+    }
   },
   relations: {
     '../form-item/index': {
-      type: 'parent',
-    },
+      type: 'parent'
+    }
   },
   data: {
-    elFormItem: null,
+    elFormItem: null
   },
   lifetimes: {
     ready() {
-      this.initCityData()
       this.initFormItem()
-    },
+    }
   },
 
   methods: {
-    // 初始化城市数据
-    initCityData() {
-      if (this.properties.mode === 'city') {
-        this.setData({
-          cityList: this.properties.data,
-        })
-      }
-    },
-    // 初始化城市
-    setCityData(data) {
-      setStorage(data, 'CITY_TREE_DATA')
-      this.setData({
-        cityList: data,
-      })
-      if (this.properties.cityId.every(i => !+i))
-        this.setDataSmart('cityId', getInitCity(data))
-    },
     // 初始化form-item实例
     initFormItem() {
       const elFormItem = this.getRelationNodes('../form-item/index')[0]
       elFormItem &&
         this.setData(
           {
-            elFormItem,
+            elFormItem
           },
           () => {
             this.judgyValue() && this.checkRule(this.properties.value)
-          },
+          }
         )
     },
     judgyValue(value = this.properties.value) {
@@ -103,7 +87,7 @@ Component({
       }
       this.triggerEvent('change', {
         cityId: e.detail.code,
-        value: e.detail.value,
+        value: e.detail.value
       })
       this.checkRule(e.detail.value)
     },
@@ -123,6 +107,6 @@ Component({
         this.data.elFormItem || this.getRelationNodes('../form-item/index')[0]
       if (!p) return
       p.validate(value)
-    },
-  },
+    }
+  }
 })

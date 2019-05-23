@@ -1,8 +1,12 @@
 <!-- index.wxml -->
 <view class="container">
-  <my-form rules="{{rules}}" bind:ruleResult="ruleResult" class="address-edit-form">
-    <my-form-item data-prop="contact" label="姓名" required>
-      <my-input placeholder="请输入" class="no-margin" value="{{formData.contact}}"></my-input>
+  <my-form rules="{{rules}}" bind:ruleResult="ruleResult" class="address-edit-form" id="_submitForm">
+    <my-form-item data-prop="input" label="input" required>
+      <my-input placeholder="请输入" class="no-margin" value="{{formData.input}}" syncAttrMap="value=formData.input" bind:syncAttrUpdate="onSyncAttrUpdate"></my-input>
+    </my-form-item>
+    <my-form-item data-prop="picker" label="picker" required>
+      <my-picker placeholder="请选择" data="{{pickerDatas}}" valuekey="name" value="{{formData.picker}}" syncAttrMap="value=formData.picker" bind:syncAttrUpdate="onSyncAttrUpdate"></my-picker>
     </my-form-item>
   </my-form>
+  <button bind:tap="checkHandle">验证</button>
 </view>

@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "my-input": "/components/input/index",
+    "my-picker": "/components/picker/index",
+    "my-upload": "/components/upload/index",
+    "my-checkbox": "/components/checkbox/index",
+    "my-checkbox-item": "/components/checkbox-item/index",
     "my-form": "/components/form/index",
     "my-form-item": "/components/form-item/index"
   }

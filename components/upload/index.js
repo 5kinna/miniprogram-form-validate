@@ -9,50 +9,50 @@ Component({
       value: '',
       observer(val) {
         this.judgyValue(val) && this.checkRule(val)
-      },
+      }
     },
     type: {
       type: String,
-      value: 'image',
+      value: 'image'
     },
     required: {
       type: Boolean,
-      value: false,
+      value: false
     },
     uploadtext: {
       // 图片上传相册提示文字
       type: String,
-      value: '上传',
+      value: '上传'
     },
     uploadurl: {
       // 图片上传接口如"/upload"
       type: String,
-      value: '',
+      value: ''
     },
     uploadkey: {
       // 图片上传formData对应的key
       type: String,
-      value: 'id',
+      value: 'id'
     },
     rest: {
       //其他参数
       type: Object,
-      value: {},
+      value: {}
     },
     disabled: {
       type: Boolean,
-      value: false,
-    },
+      value: false
+    }
   },
   relations: {
     '../form-item/index': {
-      type: 'parent',
-    },
+      type: 'parent'
+    }
   },
   lifetimes: {
     ready() {
       this.initFormItem()
-    },
+    }
   },
 
   methods: {
@@ -65,11 +65,11 @@ Component({
       elFormItem &&
         this.setData(
           {
-            elFormItem,
+            elFormItem
           },
           () => {
             this.judgyValue() && this.checkRule(this.properties.value)
-          },
+          }
         )
     },
     // 校验
@@ -84,7 +84,7 @@ Component({
       if (!url) return
       wx.previewImage({
         current: '', // 当前显示图片的http链接
-        urls: [url], // 需要预览的图片http链接列表
+        urls: [url] // 需要预览的图片http链接列表
       })
     },
     chooseImage(e) {
@@ -107,10 +107,10 @@ Component({
               this.triggerEvent('upload', tempFilePaths[0])
               this.checkRule(tempFilePaths[0])
             },
-            { ...this.properties.rest },
+            { ...this.properties.rest }
           )
-        },
+        }
       })
-    },
-  },
+    }
+  }
 })

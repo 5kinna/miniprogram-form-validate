@@ -1,19 +1,38 @@
 Component({
-  properties: {
-    data: {
-      type: Array,
-    },
-    labelkey: {
-      type: String,
-      value: 'id',
-    },
-    valuekey: {
-      type: String,
-      value: 'value',
-    },
-    checkedkey: {
-      type: String,
-      value: 'checked',
-    },
+  externalClasses: ['my-checkbox'],
+  relations: {
+    '../checkbox-item/index': {
+      type: 'child',
+      linked() {
+        this.changeCurrent()
+      },
+      linkChanged() {
+        this.changeCurrent()
+      },
+      unlinked() {
+        this.changeCurrent()
+      }
+    }
   },
+  properties: {
+    current: {
+      type: Array,
+      value: [],
+      observer: 'changeCurrent'
+    }
+  },
+  methods: {
+    changeCurrent(val = this.data.current) {
+      let items = this.getRelationNodes('../checkbox-item/index')
+      const len = items.length
+      if (len > 0) {
+        items.forEach(item => {
+          item.changeCurrent(val.indexOf(item.data.value) !== -1)
+        })
+      }
+    },
+    emitEvent(current) {
+      this.triggerEvent('change', current)
+    }
+  }
 })

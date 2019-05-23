@@ -3,19 +3,19 @@ Component({
   behaviors: [bindData],
   properties: {
     data: {
-      type: Array,
+      type: Array
     },
     labelkey: {
       type: String,
-      value: 'id',
+      value: 'id'
     },
     valuekey: {
       type: String,
-      value: 'value',
+      value: 'value'
     },
     checkedkey: {
       type: String,
-      value: 'checked',
-    },
-  },
+      value: 'checked'
+    }
+  }
 })

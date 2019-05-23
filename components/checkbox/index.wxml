@@ -1,6 +1,3 @@
-<checkbox-group class="input-box">
-  <label class="checkbox" wx:for="{{data}}" wx:key="{{index}}">
-    <my-checkbox-item value="{{item[valuekey]}}" checked="{{item[checkedkey]}}" disabled="{{item[disabled]}}" />
-    {{item[labelkey]}}
-  </label>
+<checkbox-group class="input-box my-checkbox" bindchange="emitEvent">
+  <slot></slot>
 </checkbox-group>
