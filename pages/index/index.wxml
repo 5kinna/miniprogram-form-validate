@@ -8,5 +8,5 @@
       <my-picker placeholder="请选择" data="{{pickerDatas}}" valuekey="name" value="{{formData.picker}}" syncAttrMap="value=formData.picker" bind:syncAttrUpdate="onSyncAttrUpdate"></my-picker>
     </my-form-item>
   </my-form>
-  <button bind:tap="checkHandle">验证</button>
+  <button bind:tap="checkHandle" style="margin:20rpx;">验证</button>
 </view>

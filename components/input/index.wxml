@@ -1,4 +1,4 @@
-<view class="input-box my-input">
+<view class="input-box a-line br3 my-input">
   <slot name="before"></slot>
   <textarea value="{{value}}" placeholder="{{placeholder}}" bindinput="onInput" wx:if="{{ type === 'textarea' }}" />
   <input type="{{type}}" value="{{value}}" placeholder="{{placeholder}}" bindinput="onInput" password="{{password}}" disabled="{{disabled}}" wx:else></input>

@@ -1,1 +1,5 @@
-# miniprogram-form-validate
+# 小程序实时验证表单
+
+组件参考 element-ui 表单验证思想进行设计。
+
+## 使用效果

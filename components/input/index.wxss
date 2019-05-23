@@ -141,6 +141,17 @@
   min-height: 72rpx;
 }
 
+.input-box .font-tip {
+  color: #505050;
+  font-size: 28rpx;
+  opacity: 0.4;
+}
+
+.input-box .font-content {
+  color: #505050;
+  font-size: 34rpx;
+}
+
 .input-box.disabled {
   color: rgba(80, 80, 80, 0.4);
 }
